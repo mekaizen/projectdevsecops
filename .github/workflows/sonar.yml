@@ -24,7 +24,7 @@ jobs:
       - name: Export SonarCloud Report to JSON
         run: |
           mkdir -p /tmp/security-reports
-          curl -X GET -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/issues/search?componentKeys=mekaizen_projectdevsecops&types=BUG,VULNERABILITY,CODE_SMELL&ps=500" > /tmp/security-reports/sonar-report.json
+          curl -X GET -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/issues/search?componentKeys=mekaizen_projectdevsecops2&types=BUG,VULNERABILITY,CODE_SMELL&ps=500" > /tmp/security-reports/sonar-report.json
           if ! jq empty /tmp/security-reports/sonar-report.json > /dev/null 2>&1; then
             echo "Error: Received invalid JSON from SonarCloud API"
             cat /tmp/security-reports/sonar-report.json
